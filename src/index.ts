@@ -16,7 +16,7 @@ if (!fs.existsSync(distDir)) {
 
 // Write the main HTML file with fractal tree
 const outputPath = path.join(distDir, 'index.html');
-const html = generator.generateV2HTML();
+const html = generator.generateHTML();
 fs.writeFileSync(outputPath, html, 'utf8');
 
 console.log(`✅ Website generated successfully!`);

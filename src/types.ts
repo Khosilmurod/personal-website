@@ -3,6 +3,7 @@
 export interface Project {
   title: string;
   description: string;
+  url?: string;
   hidden?: boolean;
 }
 
@@ -10,6 +11,7 @@ export interface Experience {
   position: string;
   company: string;
   year: string;
+  url?: string;
 }
 
 export interface Writing {

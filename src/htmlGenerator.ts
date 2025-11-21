@@ -9,19 +9,25 @@ export class HTMLGenerator {
 
   private generateHeader(): string {
     return `
+  <!-- theme toggle - fixed at right edge -->
+  <div class="fixed right-0 z-30 flex items-center" style="top: 12px; padding-right: 32px;">
+    <span id="theme-toggle" onclick="toggleDarkMode()" class="cursor-pointer hover:opacity-80" style="font-size: 16px;">☀️</span>
+  </div>
+
   <!-- header -->
-  <header class="fixed top-0 left-0 right-0 z-20 border-b border-black/5 dark:border-white/10 backdrop-blur bg-white/80 dark:bg-black/80">
-    <div class="mx-auto w-full max-w-[var(--container)] px-5 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2">
-        <span class="inline-block h-5 w-5 rounded-md bg-zinc-900 dark:bg-zinc-100"></span>
-        <span class="text-sm font-medium tracking-tight">${this.data.personal.name}</span>
+  <header class="fixed top-0 left-0 right-0 z-20 backdrop-blur" style="background: var(--header-bg); border-bottom: 1px solid var(--header-border);">
+    <div class="mx-auto w-full max-w-[var(--container)] px-5 py-3 flex items-center">
+      <a href="#top" class="flex items-center gap-2 hover:opacity-80" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
+        <span class="inline-block h-5 w-5 rounded-md bg-black dark:bg-white"></span>
+        <span style="font-weight: 900; color: var(--text);">${this.data.personal.name}</span>
       </a>
-      <nav class="text-sm flex items-center gap-4">
-        <a href="#about" class="hover:opacity-80">about</a>
-        <a href="#experience" class="hover:opacity-80">experience</a>
-        <a href="#projects" class="hover:opacity-80">projects</a>
-        <a href="#writing" class="hover:opacity-80">writing</a>
-        <a href="#contact" class="hover:opacity-80">contact</a>
+      <div class="flex-1"></div>
+      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
+        <a href="#about" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
+        <a href="#experience" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
+        <a href="#projects" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
+        <a href="#writing" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
+        <a href="#contact" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">contact</a>
       </nav>
     </div>
   </header>`;
@@ -30,34 +36,34 @@ export class HTMLGenerator {
   private generateHeroSection(): string {
     return `
     <!-- hero / about -->
-    <section class="py-8 md:py-10 space-y-3 p-6 rounded-xl backdrop-blur-sm bg-white/5 dark:bg-black/5 border border-white/15 dark:border-white/10">
+    <section class="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-6">
       <p class="section-title">${this.data.personal.title}</p>
       <div class="flex items-center gap-3 mt-2">
-        <a href="${this.data.personal.github}" target="_blank" rel="noopener noreferrer" class="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" aria-label="GitHub">
+        <a href="${this.data.personal.github}" target="_blank" rel="noopener noreferrer" class="transition-colors hover:opacity-80" style="color: var(--text-secondary);" aria-label="GitHub">
           <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         </a>
-        <a href="${this.data.personal.linkedin}" target="_blank" rel="noopener noreferrer" class="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" aria-label="LinkedIn">
+        <a href="${this.data.personal.linkedin}" target="_blank" rel="noopener noreferrer" class="transition-colors hover:opacity-80" style="color: var(--text-secondary);" aria-label="LinkedIn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-        <a href="mailto:${this.data.personal.email}" class="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" aria-label="Email">
+        <a href="mailto:${this.data.personal.email}" class="transition-colors hover:opacity-80" style="color: var(--text-secondary);" aria-label="Email">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </a>
       </div>
       <div class="flex flex-wrap items-center gap-2 mt-3">
-        <a href="https://www.yale.edu" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 text-xs font-semibold bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-md hover:opacity-80 transition-opacity">yale '27</a>
-        <a href="https://interactive-machines.gitlab.io/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 text-xs font-semibold bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-300 rounded-md hover:opacity-80 transition-opacity">interactive machines group</a>
+        <a href="https://www.yale.edu" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 text-xs font-semibold bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 rounded-md hover:opacity-80 transition-opacity">yale '27</a>
+        <a href="https://interactive-machines.gitlab.io/" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 text-xs font-semibold bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-200 rounded-md hover:opacity-80 transition-opacity">interactive machines group</a>
       </div>
-      <p class="text-base text-zinc-600 dark:text-zinc-300 max-w-prose">${this.data.personal.bio}</p>
+      <p class="text-base max-w-prose" style="color: var(--text);">${this.data.personal.bio}</p>
     </section>`;
   }
 
   private generateProjectCard(project: Project): string {
     const hiddenClass = project.hidden ? ' hidden' : '';
     return `
-        <li class="${hiddenClass} flex items-baseline text-sm relative navigable-item">
-          <span class="nav-indicator absolute -left-6 opacity-0 transition-opacity">→</span>
+        <li class="${hiddenClass} flex items-baseline text-sm relative navigable-item cursor-pointer hover:bg-opacity-50 transition-all" data-url="${project.url || '#'}">
+          <span class="nav-indicator absolute -left-8 opacity-0 transition-opacity">→</span>
           <span class="font-medium w-80 flex-shrink-0">${project.title}</span>
-          <span class="text-zinc-500 flex-1 project-fade" title="${project.description}">${project.description}</span>
+          <span class="flex-1 project-fade" style="color: var(--text-secondary);" title="${project.description}">${project.description}</span>
         </li>`;
   }
 
@@ -66,12 +72,12 @@ export class HTMLGenerator {
     
     return `
     <!-- projects -->
-    <section id="projects" class="py-8 md:py-10 space-y-6 p-6 rounded-xl backdrop-blur-sm bg-white/5 dark:bg-black/5 border border-white/15 dark:border-white/10">
-      <p class="section-title">projects</p>
+    <section id="projects" class="py-6 md:py-8 space-y-6 p-6 rounded-xl card mb-6">
+      <p class="section-title" style="color: var(--muted);">projects</p>
       <ul id="project-list" class="space-y-3">${projectCards}
       </ul>
       <div class="pt-4">
-        <button id="show-more" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors font-medium">
+        <button id="show-more" class="text-sm transition-colors font-medium hover:opacity-80" style="color: var(--text-tertiary);">
           + more projects
         </button>
       </div>
@@ -80,10 +86,10 @@ export class HTMLGenerator {
 
   private generateExperienceItem(exp: Experience): string {
     return `
-        <li class="flex items-baseline text-sm relative navigable-item">
-          <span class="nav-indicator absolute -left-6 opacity-0 transition-opacity">→</span>
+        <li class="flex items-baseline text-sm relative navigable-item cursor-pointer hover:bg-opacity-50 transition-all" data-url="${exp.url || '#'}">
+          <span class="nav-indicator absolute -left-8 opacity-0 transition-opacity">→</span>
           <span class="font-medium w-80 flex-shrink-0">${exp.company}</span>
-          <span class="text-zinc-500 flex-1">${exp.position} · ${exp.year}</span>
+          <span class="flex-1" style="color: var(--text-secondary);">${exp.position} · ${exp.year}</span>
         </li>`;
   }
 
@@ -92,8 +98,8 @@ export class HTMLGenerator {
     
     return `
     <!-- experience -->
-    <section id="experience" class="py-8 md:py-10 space-y-6 p-6 rounded-xl backdrop-blur-sm bg-white/5 dark:bg-black/5 border border-white/15 dark:border-white/10">
-      <p class="section-title">experience</p>
+    <section id="experience" class="py-6 md:py-8 space-y-6 p-6 rounded-xl card mb-6">
+      <p class="section-title" style="color: var(--muted);">experience</p>
       <ul class="space-y-3">${experienceItems}
       </ul>
     </section>`;
@@ -109,8 +115,8 @@ export class HTMLGenerator {
     
     return `
     <!-- writing -->
-    <section id="writing" class="py-8 md:py-10 space-y-3 p-6 rounded-xl backdrop-blur-sm bg-white/5 dark:bg-black/5 border border-white/15 dark:border-white/10">
-      <p class="section-title">writing</p>
+    <section id="writing" class="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-6">
+      <p class="section-title" style="color: var(--muted);">writing</p>
       <ul class="space-y-2 text-sm">${writingItems}
       </ul>
     </section>`;
@@ -119,22 +125,51 @@ export class HTMLGenerator {
   private generateContactSection(): string {
     return `
     <!-- contact -->
-    <section id="contact" class="py-8 md:py-10 space-y-3 p-6 rounded-xl backdrop-blur-sm bg-white/5 dark:bg-black/5 border border-white/15 dark:border-white/10">
+    <section id="contact" class="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-8">
       <p class="section-title">contact</p>
-      <p class="max-w-prose text-zinc-700 dark:text-zinc-300">say hi at <a href="mailto:${this.data.personal.email}" class="underline hover:opacity-80">${this.data.personal.email}</a> or find me on <a href="${this.data.personal.linkedin}" class="hover:underline">linkedin</a> and <a href="${this.data.personal.github}" class="hover:underline">github</a>.</p>
+      <p class="text-base max-w-prose" style="color: var(--text);">say hi at <a href="mailto:m.abdukholikov@yale.edu" class="underline hover:opacity-80" style="color: var(--text);">m.abdukholikov@yale.edu</a> or find me on <a href="${this.data.personal.linkedin}" class="hover:underline" style="color: var(--text);">linkedin</a> and <a href="${this.data.personal.github}" class="hover:underline" style="color: var(--text);">github</a>.</p>
     </section>`;
   }
 
   private generateFooter(): string {
-    return `
-    <footer class="py-8 text-xs text-zinc-500 dark:text-zinc-400">
-      <p>© 2025 · minimal build. no tracking. deployed on vercel.</p>
-    </footer>`;
+    return ``;
   }
 
   private generateJavaScript(): string {
     return `
   <script>
+    // Dark mode functions
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      updateThemeIcon();
+    }
+
+    function setLightMode() {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      updateThemeIcon();
+    }
+
+    function setDarkMode() {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      updateThemeIcon();
+    }
+
+    function updateThemeIcon() {
+      const icon = document.getElementById('theme-toggle');
+      if (icon) {
+        icon.textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
+      }
+    }
+
+    // Initialize theme
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    updateThemeIcon();
+
     const btn = document.getElementById('show-more');
     const projects = document.querySelectorAll('#project-list .hidden');
     btn.addEventListener('click', () => {
@@ -181,311 +216,29 @@ export class HTMLGenerator {
         }
       }
     });
-    </script>
-
-    <!-- Generative art - Clean sprawling roots - COMMENTED OUT -->
-    <!--
-    <script>
-    (function() {
-      const canvas = document.createElement('canvas');
-      canvas.id = 'generative-canvas';
-      canvas.style.position = 'fixed';
-      canvas.style.top = '0';
-      canvas.style.left = '0';
-      canvas.style.zIndex = '-1';
-      canvas.style.pointerEvents = 'auto'; // Enable pointer events
-      canvas.style.cursor = 'pointer';
-      document.body.insertBefore(canvas, document.body.firstChild);
-      
-      const ctx = canvas.getContext('2d');
-      
-      // High resolution canvas to prevent pixelation
-      const dpr = window.devicePixelRatio || 2;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = window.innerWidth + 'px';
-      canvas.style.height = window.innerHeight + 'px';
-      ctx.scale(dpr, dpr);
-      
-      const isDark = document.documentElement.classList.contains('dark') || 
-                     window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      const baseColor = isDark ? '120, 120, 120' : '90, 90, 90';
-      const roots = [];
-      const maxRoots = 15;
-      let hoveredRoot = null;
-      let mouseX = -1000;
-      let mouseY = -1000;
-      
-      class Root {
-        constructor(startX, startY, angle, depth, thickness) {
-          this.points = [];
-          this.angle = angle;
-          this.baseAngle = angle;
-          this.depth = depth;
-          this.thickness = 0.8; // Uniform thin width
-          this.children = [];
-          this.length = 0;
-          this.maxLength = 225 + Math.random() * 180;
-          this.growing = true;
-          this.x = startX;
-          this.y = startY;
-          this.nextBranchAt = 35 + Math.random() * 25;
-          this.hasBranched = false;
-          this.speed = 1.8 - (depth * 0.25);
-          this.isMainRoot = depth === 0;
-          this.mainRoot = this.isMainRoot ? this : null;
+    
+    // Click navigation for list items
+    document.addEventListener('click', (e) => {
+      const clickedItem = e.target.closest('.navigable-item');
+      if (clickedItem) {
+        const url = clickedItem.getAttribute('data-url');
+        if (url && url !== '#' && url !== 'undefined') {
+          window.open(url, '_blank', 'noopener,noreferrer');
         }
         
-        grow() {
-          if (!this.growing) {
-            let anyGrowing = false;
-            for (const child of this.children) {
-              if (child.grow()) anyGrowing = true;
-            }
-            return anyGrowing;
-          }
-          
-          this.angle += (Math.random() - 0.5) * 0.15;
-          
-          const downwardPull = Math.PI / 2;
-          const pullStrength = 0.008;
-          this.angle += (downwardPull - this.angle) * pullStrength;
-          
-          this.x += Math.cos(this.angle) * this.speed;
-          this.y += Math.sin(this.angle) * this.speed;
-          
-          this.points.push({x: this.x, y: this.y});
-          this.length++;
-          
-          if (!this.hasBranched && this.length >= this.nextBranchAt && this.depth < 4 && roots.length < maxRoots) {
-            this.branch();
-            this.hasBranched = true;
-          }
-          
-          if (this.length >= this.maxLength || this.y > window.innerHeight || 
-              this.x < window.innerWidth * 0.65 || this.x > window.innerWidth) {
-            this.growing = false;
-          }
-          
-          return true;
-        }
+        // Update active state
+        const visibleItems = Array.from(document.querySelectorAll('.navigable-item:not(.hidden)'));
+        visibleItems.forEach(item => item.classList.remove('active'));
+        clickedItem.classList.add('active');
         
-        branch() {
-          const numBranches = this.depth < 2 ? 2 : (Math.random() > 0.5 ? 2 : 1);
-          
-          for (let i = 0; i < numBranches; i++) {
-            const angleSpread = (Math.random() - 0.5) * Math.PI * 0.8;
-            const branchAngle = this.angle + angleSpread;
-            
-            const child = new Root(
-              this.x,
-              this.y,
-              branchAngle,
-              this.depth + 1,
-              0.8 // Same thin width
-            );
-            
-            child.mainRoot = this.mainRoot || this;
-            this.children.push(child);
-            roots.push(child);
-          }
-        }
-        
-        isNearMouse(mx, my, threshold = 8) {
-          for (const point of this.points) {
-            const dist = Math.sqrt((point.x - mx) ** 2 + (point.y - my) ** 2);
-            if (dist < threshold) return true;
-          }
-          return false;
-        }
-        
-        draw() {
-          if (this.points.length < 2) return;
-          
-          const isHovered = hoveredRoot && (hoveredRoot === this.mainRoot || this.mainRoot === hoveredRoot);
-          const opacity = Math.max(0.06, 0.14 - this.depth * 0.02);
-          const finalOpacity = isHovered ? opacity * 2.5 : opacity; // Bolder on hover
-          
-          ctx.strokeStyle = 'rgba(' + baseColor + ', ' + finalOpacity + ')';
-          ctx.lineWidth = isHovered ? this.thickness * 1.8 : this.thickness; // Thicker on hover
-          ctx.lineCap = 'round';
-          ctx.lineJoin = 'round';
-          
-          ctx.beginPath();
-          ctx.moveTo(this.points[0].x, this.points[0].y);
-          
-          for (let i = 1; i < this.points.length - 1; i += 1) {
-            const xc = (this.points[i].x + this.points[i + 1].x) / 2;
-            const yc = (this.points[i].y + this.points[i + 1].y) / 2;
-            ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, xc, yc);
-          }
-          
-          if (this.points.length > 1) {
-            const last = this.points[this.points.length - 1];
-            ctx.lineTo(last.x, last.y);
-          }
-          
-          ctx.stroke();
-        }
+        // Update currentIndex for keyboard navigation consistency
+        currentIndex = visibleItems.indexOf(clickedItem);
       }
-      
-      function spawnRootSystem() {
-        if (roots.length >= maxRoots) return;
-        
-        const startX = window.innerWidth * 0.78 + Math.random() * window.innerWidth * 0.12;
-        const startY = 25 + Math.random() * 35;
-        
-        const mainRoot = new Root(
-          startX,
-          startY,
-          Math.PI / 2 + (Math.random() - 0.5) * 0.35,
-          0,
-          0.8 // Thin uniform width
-        );
-        
-        roots.push(mainRoot);
-      }
-      
-      spawnRootSystem();
-      setTimeout(() => spawnRootSystem(), 1500);
-      
-      // Mouse tracking
-      canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-        
-        // Check which root is hovered
-        hoveredRoot = null;
-        for (const root of roots) {
-          if (root.isMainRoot && root.isNearMouse(mouseX, mouseY, 15)) {
-            hoveredRoot = root;
-            break;
-          }
-        }
-      });
-      
-      canvas.addEventListener('mouseleave', () => {
-        hoveredRoot = null;
-      });
-      
-      canvas.addEventListener('click', () => {
-        if (hoveredRoot) {
-          console.log('Clicked on root tree!', hoveredRoot);
-          // You can add custom behavior here
-        }
-      });
-      
-      let frameCount = 0;
-      
-      function animate() {
-        ctx.fillStyle = isDark ? 'rgba(0, 0, 0, 0.004)' : 'rgba(255, 255, 255, 0.004)';
-        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-        
-        for (const root of roots) {
-          root.draw();
-          root.grow();
-        }
-        
-        frameCount++;
-        
-        if (frameCount % 900 === 0 && roots.length < maxRoots) {
-          spawnRootSystem();
-        }
-        
-        requestAnimationFrame(animate);
-      }
-      
-      animate();
-      
-      window.addEventListener('resize', () => {
-        const dpr = window.devicePixelRatio || 2;
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        canvas.style.width = window.innerWidth + 'px';
-        canvas.style.height = window.innerHeight + 'px';
-        ctx.scale(dpr, dpr);
-      });
-    })();
-    </script>
-    -->
+    });
   </script>`;
   }
 
-  public generateFullHTML(): string {
-    return `<!doctype html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${this.data.personal.name} — engineer</title>
-  <meta name="description" content="minimal, fast personal site for a developer." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
-      <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { --container: 46rem; }
-    body, h1, h2, h3, h4, h5, h6, p, a, li, span { font-family: 'EB Garamond', serif; text-transform: lowercase; font-size: 1.05em; font-weight: 500; }
-    .section-title { letter-spacing:.15em; text-transform:lowercase; font-size:12px; font-weight:700; color:rgb(113,113,122); }
-    .project-fade {
-      white-space: nowrap;
-      overflow: hidden;
-      position: relative;
-    }
-    .project-fade::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50px;
-      height: 100%;
-      background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
-      );
-      pointer-events: none;
-    }
-    .dark .project-fade::after {
-      background: linear-gradient(90deg, 
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 1) 100%
-      );
-    }
-    #generative-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.5;
-    }
-    .navigable-item.active .nav-indicator {
-      opacity: 1;
-    }
-  </style>
-</head>
-<body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 antialiased">
-${this.generateHeader()}
-
-  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-20">
-${this.generateHeroSection()}
-${this.generateExperienceSection()}
-${this.generateProjectsSection()}
-${this.generateWritingSection()}
-${this.generateContactSection()}
-${this.generateFooter()}
-  </main>
-${this.generateJavaScript()}
-</body>
-</html>`;
-  }
-
-  public generateV2HTML(): string {
+  public generateHTML(): string {
     return `<!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -499,10 +252,49 @@ ${this.generateJavaScript()}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
   <style>
-    :root { --container: 46rem; }
+    :root {
+      --container: 46rem;
+      --bg: #ffffff;
+      --text: #18181b;
+      --text-secondary: #52525b;
+      --text-tertiary: #71717a;
+      --muted: #a1a1aa;
+      --card-bg: rgba(255,255,255,0.4);
+      --card-border: transparent;
+      --header-bg: rgba(255,255,255,0.95);
+      --header-border: rgba(0,0,0,0.05);
+      --canvas-opacity: 0.5;
+    }
+    .dark {
+      --bg: #0f0f0f;
+      --text: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a;
+      --muted: #52525b;
+      --card-bg: rgba(15,15,15,0.25);
+      --card-border: transparent;
+      --header-bg: rgba(15,15,15,0.95);
+      --header-border: rgba(255,255,255,0.1);
+      --canvas-opacity: 0.2;
+    }
+    body { background: var(--bg); color: var(--text); }
+    a, p, span, li { color: var(--text); }
     body, h1, h2, h3, h4, h5, h6, p, a, li, span { font-family: 'EB Garamond', serif; text-transform: lowercase; font-size: 1.05em; font-weight: 500; }
-    .section-title { letter-spacing:.15em; text-transform:lowercase; font-size:12px; font-weight:700; color:rgb(113,113,122); }
+    .section-title { letter-spacing:.15em; text-transform:lowercase; font-size:12px; font-weight:700; color: var(--muted); }
+    .nav-text { font-family: 'EB Garamond', serif !important; letter-spacing: 0.15em !important; text-transform: lowercase !important; font-size: 12px !important; font-weight: 700 !important; color: var(--text) !important; }
+    .card { 
+      background: var(--card-bg); 
+      border: 1px solid var(--card-border); 
+      border-radius: 12px; 
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+    }
     .project-fade {
       white-space: nowrap;
       overflow: hidden;
@@ -516,22 +308,18 @@ ${this.generateJavaScript()}
       width: 50px;
       height: 100%;
       background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 100%
+        transparent 0%,
+        var(--card-bg) 100%
       );
       pointer-events: none;
-    }
-    .dark .project-fade::after {
-      background: linear-gradient(90deg, 
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 1) 100%
-      );
     }
     .navigable-item.active .nav-indicator {
       opacity: 1;
     }
-    #defaultCanvas0 {
-      position: fixed !important;
+    .navigable-item:hover {
+      background: var(--card-bg);
+      border-radius: 6px;
+    } position: fixed !important;
       top: 0 !important;
       right: 0 !important;
       z-index: -1 !important;
@@ -539,10 +327,10 @@ ${this.generateJavaScript()}
     }
   </style>
 </head>
-<body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 antialiased">
+<body class="antialiased" style="background: var(--bg); color: var(--text);">
 ${this.generateHeader()}
 
-  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-20">
+  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-16">
 ${this.generateHeroSection()}
 ${this.generateExperienceSection()}
 ${this.generateProjectsSection()}
@@ -561,7 +349,8 @@ ${this.generateJavaScript()}
         this.end = end;
         this.age = 1;
         this.branch_diameter = 0.5; // Start thinner (was 1)
-        this.branch_maturity_age = random(30, 90);
+        // faster maturity for quicker branching
+        this.branch_maturity_age = random(30, 80);
         this.is_mature = false;
         this.has_child = false;
         this.will_split = false;
@@ -576,7 +365,8 @@ ${this.generateJavaScript()}
           this.is_branch_mature();
           if (!this.is_mature) {
             let branch_length = p5.Vector.sub(this.end, this.begin);
-            this.end.add(branch_length.setMag(1));
+            // faster per-frame growth
+            this.end.add(branch_length.setMag(1.2));
             
             // Add downward bias (stronger as tree grows)
             const progress = this.treeRef ? this.treeRef.branchSplits / this.treeRef.maxBranchSplits : 0;
@@ -589,7 +379,8 @@ ${this.generateJavaScript()}
       }
 
       update_branch_diameter() {
-        this.branch_diameter += 0.005;
+        // slower diameter growth for a gentler animation
+        this.branch_diameter += 0.002;
       }
 
       is_branch_mature() {
@@ -599,10 +390,10 @@ ${this.generateJavaScript()}
       }
 
       generate_boolean() {
-        // Dynamic probability: very low branching - starts at 15% (0.85 trigger), ends at 99.5% (0.005 trigger)
+        // Dynamic probability: moderate branching - starts at 15% (0.85 trigger), ends at 95% (0.05 trigger)
         const progress = this.treeRef ? this.treeRef.branchSplits / this.treeRef.maxBranchSplits : 0;
-        const progressCurved = Math.pow(progress, 0.25); // Ultra fast exponential curve
-        const true_trigger = 0.85 - (progressCurved * 0.845); // 0.85 -> 0.005 (minimal branching)
+        const progressCurved = Math.pow(progress, 0.3); // Slightly slower curve
+        const true_trigger = 0.85 - (progressCurved * 0.80); // 0.85 -> 0.05 (more branching)
         const rand_boolean = Math.random();
         return rand_boolean >= true_trigger;
       }
@@ -620,7 +411,8 @@ ${this.generateJavaScript()}
     class Tree {
       constructor(begin, end, alpha = 255) {
         this.main_branch = new Branch(begin, end, this);
-        this.main_branch.branch_maturity_age = random(40, 110);
+        // faster initial split
+        this.main_branch.branch_maturity_age = random(40, 100);
         this.branches = [];
         this.branches.push(this.main_branch);
         this.age = 1;
@@ -671,7 +463,8 @@ ${this.generateJavaScript()}
           }
         }
         if (this.tree_food > 0) {
-          this.tree_food -= 10;
+          // consume food faster for quicker growth
+          this.tree_food -= 4;
         } else {
           this.isGrowing = false;
         }
@@ -681,7 +474,12 @@ ${this.generateJavaScript()}
         const isDark = document.documentElement.classList.contains('dark') || 
                        window.matchMedia('(prefers-color-scheme: dark)').matches;
         for (let i = 0; i < this.branches.length; i++) {
-          stroke(isDark ? this.alpha : 255 - this.alpha);
+          // Use a light stroke in dark mode, darker stroke in light mode
+          if (isDark) {
+            stroke(230, 230, 230, 200);
+          } else {
+            stroke(40, 40, 40, 200);
+          }
           strokeWeight(this.branches[i].branch_diameter);
           line(
             this.branches[i].begin.x,
@@ -723,6 +521,7 @@ ${this.generateJavaScript()}
         forest[i].grows();
         forest[i].shows();
       }
+      // higher frame rate for faster animation
       frameRate(60);
     }
 

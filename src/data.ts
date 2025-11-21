@@ -2,7 +2,7 @@ import { SiteData } from './types';
 
 export const siteData: SiteData = {
   personal: {
-    name: "khosilmurod abdukholikov",
+    name: "khosilmurod",
     title: "software engineer",
     bio: "i am a computer science student at yale with a love for building systems that feel simple and fast. i grew up fascinated by how technology connects people, and now i focus on creating ai tools and platforms that are both reliable and delightful to use. my journey has been about constant learning, from operating systems to large-scale ai assistants, always with the goal of making complex things feel effortless.",
     email: "m.abdukholikov@yale.edu",
