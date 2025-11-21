@@ -17,6 +17,8 @@ export interface Experience {
 export interface Writing {
   title: string;
   url: string;
+  slug: string;
+  content?: string;
 }
 
 export interface PersonalInfo {

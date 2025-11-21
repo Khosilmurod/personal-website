@@ -70,15 +70,18 @@ export const siteData: SiteData = {
   writing: [
     {
       title: "how i designed yale-gpt to feel fast and simple",
-      url: "#"
+      url: "blog/yale-gpt-design.html",
+      slug: "yale-gpt-design"
     },
     {
       title: "what i learned from modifying an operating system",
-      url: "#"
+      url: "blog/operating-system-lessons.html",
+      slug: "operating-system-lessons"
     },
     {
       title: "building tools for communities without internet",
-      url: "#"
+      url: "blog/offline-communication-tools.html",
+      slug: "offline-communication-tools"
     }
   ]
 };
