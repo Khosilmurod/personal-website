@@ -1,0 +1,121 @@
+---
+import { PortfolioService } from "../services/PortfolioService.js";
+const svc = new PortfolioService();
+const projects = await svc.listProjects();
+const experience = await svc.listExperience();
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>khosilmurod abdukholikov — engineer</title>
+  <meta name="description" content="minimal, fast personal site for a developer." />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 antialiased">
+  <!-- header -->
+  <header class="sticky top-0 z-20 border-b border-black/5 dark:border-white/10 backdrop-blur">
+    <div class="mx-auto w-full max-w-[var(--container)] px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="inline-block h-5 w-5 rounded-md bg-zinc-900 dark:bg-zinc-100"></span>
+        <span class="text-sm font-medium tracking-tight">khosilmurod abdukholikov</span>
+      </a>
+      <nav class="text-sm flex items-center gap-4">
+        <a href="#about" class="hover:opacity-80">about</a>
+        <a href="#projects" class="hover:opacity-80">projects</a>
+        <a href="#experience" class="hover:opacity-80">experience</a>
+        <a href="#writing" class="hover:opacity-80">writing</a>
+        <a href="#contact" class="hover:opacity-80">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5">
+    <!-- hero / about -->
+    <section id="about" class="py-10 md:py-12 space-y-3">
+      <p class="section-title">software engineer</p>
+      <p class="text-base text-zinc-600 dark:text-zinc-300 max-w-prose">i am a computer science student at yale with a love for building systems that feel simple and fast. i grew up fascinated by how technology connects people, and now i focus on creating ai tools and platforms that are both reliable and delightful to use. my journey has been about constant learning, from operating systems to large-scale ai assistants, always with the goal of making complex things feel effortless.</p>
+    </section>
+
+    <!-- projects -->
+    <section id="projects" class="py-10 md:py-12 space-y-4">
+      <p class="section-title">projects</p>
+      <div id="project-list" class="grid md:grid-cols-2 gap-6">
+        {projects.slice(0, 4).map(project => (
+          <article class="group rounded-xl p-4 bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10">
+            <h3 class="font-medium">{project.title}</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">{project.description}</p>
+          </article>
+        ))}
+        {projects.slice(4).map(project => (
+          <article class="group hidden rounded-xl p-4 bg-white/70 dark:bg-white/5 border border-black/5 dark:border-white/10">
+            <h3 class="font-medium">{project.title}</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">{project.description}</p>
+          </article>
+        ))}
+      </div>
+      {projects.length > 4 && (
+        <div class="flex justify-center mt-4">
+          <button id="show-more" class="text-sm text-zinc-600 dark:text-zinc-300 hover:opacity-80 flex items-center gap-1">
+            <span>more projects</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </section>
+
+    <!-- experience -->
+    <section id="experience" class="py-10 md:py-12 space-y-6">
+      <p class="section-title">experience</p>
+      <ul class="space-y-3">
+        {experience.map(exp => (
+          <li class="flex justify-between text-sm">
+            <span class="font-medium">{exp.company}</span>
+            <span class="text-zinc-500">{exp.role} · {exp.year}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- writing -->
+    <section id="writing" class="py-10 md:py-12 space-y-3">
+      <p class="section-title">writing</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:underline">how i designed yale-gpt to feel fast and simple</a></li>
+        <li><a href="#" class="hover:underline">what i learned from modifying an operating system</a></li>
+        <li><a href="#" class="hover:underline">building tools for communities without internet</a></li>
+      </ul>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="py-10 md:py-12 space-y-3">
+      <p class="section-title">contact</p>
+      <p class="max-w-prose text-zinc-700 dark:text-zinc-300">say hi at <a href="mailto:m.abdukholikov@yale.edu" class="underline hover:opacity-80">m.abdukholikov@yale.edu</a> or find me on <a href="https://linkedin.com/in/khosilmurod" class="hover:underline">linkedin</a> and <a href="https://github.com/khosilmurod" class="hover:underline">github</a>.</p>
+    </section>
+
+    <footer class="py-8 text-xs text-zinc-500 dark:text-zinc-400">
+      <p>© 2025 · minimal build. no tracking. deployed on vercel.</p>
+    </footer>
+  </main>
+
+  <script>
+    const btn = document.getElementById('show-more');
+    const projects = document.querySelectorAll('#project-list .hidden');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        projects.forEach(p => p.classList.remove('hidden'));
+        btn.style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>

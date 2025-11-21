@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "yale-gpt",
+    "title": "yale-gpt",
+    "description": "ai assistant for yale students"
+  },
+  {
+    "slug": "weensyos-mods",
+    "title": "weensyos mods",
+    "description": "os with memory isolation"
+  },
+  {
+    "slug": "mesh-nodes",
+    "title": "mesh nodes",
+    "description": "solar raspberry pi network"
+  },
+  {
+    "slug": "navi",
+    "title": "navi",
+    "description": "chat platform for ai agents"
+  },
+  {
+    "slug": "astro-blog",
+    "title": "astro-blog",
+    "description": "lightweight markdown blog"
+  },
+  {
+    "slug": "cursor-tools",
+    "title": "cursor-tools",
+    "description": "macos cursor automation"
+  }
+]
