@@ -62,7 +62,7 @@ export class HTMLGenerator {
             <a href="mailto:${this.data.personal.email}" class="px-2.5 py-1 text-xs font-semibold bg-gray-50 dark:bg-gray-900/30 text-gray-700 dark:text-gray-200 rounded-md hover:opacity-80 transition-opacity cursor-pointer" aria-label="Send email">${this.data.personal.email}</a>
           </div>
         </div>
-        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0" style="margin-top:2.5rem;">
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center flex-shrink-0" style="margin-top:2.5rem;">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-gray-500 dark:text-gray-400">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
           </svg>
@@ -83,35 +83,39 @@ export class HTMLGenerator {
   }
 
   private generateProjectsSection(): string {
-    const projectCards = this.data.projects.map(project => this.generateProjectCard(project)).join('');
-    
-      // Example project data (replace with your actual data structure)
-      const projects = [
-        {
-          name: "yale-gpt",
-          subtitle: "ai assistant for yale campus information",
-          meta: "c++, python · infra, rag, search",
-          links: { repo: "#", demo: "#", blog: "#" },
-        },
-        {
-          name: "weensyos operating system",
-          subtitle: "virtual memory in toy operating system",
-          meta: "c · paging, isolation, processes",
-          links: { repo: "#", demo: "#", blog: "#" },
-        },
-        {
-          name: "point-of-sale system",
-          subtitle: "full-stack pos for managing sales, inventory",
-          meta: "spring boot, react · postgres, mongo",
-          links: { repo: "#", demo: "#", blog: "#" },
-        },
-        {
-          name: "asteroids game",
-          subtitle: "game engine for asteroids shooter game",
-          meta: "c++ · sdl2, custom engine",
-          links: { repo: "#", demo: "#", blog: "#" },
-        },
-      ];
+    const projectData = [
+      {
+        title: "yale-gpt",
+        subtitle: "ai assistant for yale campus information",
+        meta: "c++, python · infra, rag, search",
+        links: { repo: "#", demo: "#", blog: "#" },
+      },
+      {
+        title: "weensyos operating system",
+        subtitle: "virtual memory in toy operating system",
+        meta: "c · paging, isolation, processes",
+        links: { repo: "https://github.com/Khosilmurod/WeensyOS", demo: "#", blog: "#" },
+      },
+      {
+        title: "point-of-sale system",
+        subtitle: "full-stack pos for managing sales, inventory",
+        meta: "spring boot, react · postgres, mongo",
+        links: { repo: "https://github.com/Khosilmurod/pos-system", demo: "#", blog: "#" },
+      },
+      {
+        title: "space invaders",
+        subtitle: "game engine for asteroids shooter game",
+        meta: "c++ · sdl2, custom engine",
+        links: { repo: "https://github.com/Khosilmurod/space-invaders", demo: "#", blog: "#" },
+      },
+      {
+        title: "smart vase!",
+        subtitle: "embedded systems smart plant vase",
+        meta: "arduino, sensors · iot, automation",
+        links: { repo: "#", demo: "#", blog: "#" },
+        hidden: true
+      },
+    ];
 
     // SVG icons
     const githubIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
@@ -120,40 +124,43 @@ export class HTMLGenerator {
 
     // Project link button
     function projectLink(label: string, icon: string, href: string) {
-      return `<a href="${href}" aria-label="${label}" class="inline-flex items-center gap-1 rounded-full border border-neutral-200/80 bg-white/70 px-2.5 py-1 text-xs font-medium lowercase tracking-wide text-neutral-700 shadow-sm transition-all duration-150 hover:border-neutral-400 hover:bg-white hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-200">${icon}<span style="font-family: 'EB Garamond', serif; font-size: 1em;">${label}</span></a>`;
+      const isDisabled = href === "#";
+      const disabledClass = isDisabled ? " opacity-50 cursor-not-allowed pointer-events-none" : "";
+      const targetAttr = isDisabled ? "" : ' target="_blank" rel="noopener noreferrer"';
+      return `<a href="${href}" aria-label="${label}"${targetAttr} class="inline-flex items-center gap-1 rounded-full border border-neutral-200/80 dark:border-zinc-700 bg-white/70 dark:bg-zinc-800/70 px-2.5 py-1 text-xs font-medium lowercase tracking-wide text-neutral-700 dark:text-zinc-200 shadow-sm transition-all duration-150 hover:border-neutral-400 dark:hover:border-zinc-500 hover:bg-white dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-emerald-200${disabledClass}">${icon}<span style="font-family: 'EB Garamond', serif; font-size: 1em;">${label}</span></a>`;
     }
 
     // Projects window markup
     return `
-    <section class="mt-20 max-w-4xl rounded-3xl border border-neutral-200/70 bg-white/80 shadow-[0_18px_45px_rgba(15,23,42,0.06)] backdrop-blur-sm mx-auto">
+    <section class="mt-12 max-w-4xl rounded-3xl border border-neutral-200/70 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 shadow-[0_18px_45px_rgba(15,23,42,0.06)] backdrop-blur-sm mx-auto">
       <!-- window header -->
-      <div class="flex items-center justify-between border-b border-neutral-200/80 px-4 py-2">
+      <div class="flex items-center justify-between border-b border-neutral-200/80 dark:border-zinc-700 px-4 py-2">
         <div class="flex items-center gap-1.5">
           <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span>
           <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
         </div>
         <h2 class="section-title" style="font-family: 'EB Garamond', serif; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .15em; text-transform: lowercase;">projects</h2>
-        <div class="h-2 w-8 rounded-full bg-neutral-100"></div>
+        <div class="h-2 w-8 rounded-full bg-neutral-100 dark:bg-zinc-500"></div>
       </div>
       <!-- window body -->
       <div class="grid gap-2 px-4 py-4 md:px-6 md:py-5">
         <!-- column labels -->
-        <div class="divide-y divide-neutral-200/80">
-          ${projects.map((project, idx) => `
-            <article class="group flex flex-col gap-3 py-3 md:flex-row md:items-center md:gap-4 transition-all duration-150 hover:bg-neutral-50/60" tabindex="0" style="font-family: 'EB Garamond', serif; font-size: 15px;">
+        <div class="divide-y divide-neutral-200/80 dark:divide-zinc-700/80">
+          ${projectData.map((project, idx) => `
+            <article class="${project.hidden ? 'hidden' : ''} flex flex-col gap-3 py-3 md:flex-row md:items-center md:gap-4 transition-all duration-150 hover:bg-neutral-50/60 dark:hover:bg-zinc-800/60" tabindex="0" style="font-family: 'EB Garamond', serif; font-size: 15px;">
               <div class="flex flex-1 items-start gap-2">
-                <div class="mt-1 hidden h-3 w-3 flex-none items-center justify-center rounded-full border border-neutral-200 text-[9px] text-neutral-400 group-hover:border-neutral-500 group-hover:text-neutral-700 md:flex"><span>↘</span></div>
+                <div class="mt-1 hidden h-3 w-3 flex-none items-center justify-center rounded-full border border-neutral-200 text-[9px] text-neutral-400 group-hover:border-neutral-500 group-hover:text-neutral-700 dark:text-zinc-400 dark:group-hover:border-zinc-400 dark:group-hover:text-zinc-200 md:flex"><span>↘</span></div>
                 <div class="flex-1">
                   <div class="flex items-center gap-2">
-                    <h3 class="font-semibold lowercase tracking-tight text-neutral-900" style="font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 700;">${project.name}</h3>
-                    ${idx === 0 ? `<span class="rounded-full border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[11px] font-normal lowercase text-emerald-700 shadow-sm" style="font-family: 'EB Garamond', serif; font-size: 11px; font-weight: 500;">featured</span>` : ""}
+                    <h3 class="font-semibold lowercase tracking-tight text-neutral-900 dark:text-zinc-100" style="font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 700;">${project.title}</h3>
+                    ${idx === 0 ? `<span class="rounded-full border border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 text-[11px] font-normal lowercase text-emerald-700 dark:text-emerald-200 shadow-sm" style="font-family: 'EB Garamond', serif; font-size: 11px; font-weight: 500;">featured</span>` : ""}
                   </div>
-                  <p class="mt-0.5 leading-snug text-neutral-500" style="font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 400;">${project.subtitle}</p>
+                  <p class="mt-0.5 leading-snug text-neutral-500 dark:text-zinc-400" style="font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 400;">${project.subtitle}</p>
                 </div>
               </div>
                 <div class="md:w-[32%] text-center">
-                  <p class="leading-snug text-neutral-400 md:text-center" style="font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 400;">${project.meta}</p>
+                  <p class="leading-snug text-neutral-400 dark:text-zinc-500 md:text-center" style="font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 400;">${project.meta}</p>
               </div>
               <div class="flex flex-wrap justify-start gap-1.5 md:w-[28%] md:justify-end">
                 ${projectLink("repo", githubIcon, project.links.repo)}
@@ -162,6 +169,9 @@ export class HTMLGenerator {
               </div>
             </article>
           `).join('')}
+        </div>
+        <div class="flex justify-center pt-4">
+          <button id="show-more" class="hover:opacity-80 text-sm lowercase" style="color: var(--muted); font-family: 'EB Garamond', serif;">show more</button>
         </div>
       </div>
     </section>`;
@@ -464,12 +474,13 @@ export class HTMLGenerator {
   </main>
 
   ${this.generateJavaScript()}
-  ${this.generateTreeScript()}
+  ${this.generateTreeScript('top')}
+  ${this.generateTreeScript('bottom')}
 </body>
 </html>`;
   }
 
-  private generateTreeScript(): string {
+  private generateTreeScript(position: 'top' | 'bottom' = 'top'): string {
     return `
   <!-- P5.js Fractal Tree -->
   <script>
@@ -629,18 +640,29 @@ export class HTMLGenerator {
     function setup() {
       let canvas = createCanvas(windowWidth, windowHeight);
       canvas.style('position', 'fixed');
-      canvas.style('top', '0px');
-      canvas.style('right', '0px');
       canvas.style('z-index', '-1');
+      canvas.style('pointer-events', 'none');
       canvas.style('opacity', '0.3');
-      
-      // Start tree from top right corner growing downward
-      let random_abciss = width - 200;
-      let depth = 255;
-      let seed_start_x = createVector(random_abciss, 0);
-      let seed_start_y = createVector(random_abciss, 1);
-      tree = new Tree(seed_start_x, seed_start_y, depth);
-      forest.push(tree);
+      canvas.style('right', '0px');
+      if ('${position}' === 'bottom') {
+        canvas.style('bottom', '0px');
+        // Start tree from bottom right corner growing upward
+        let random_abciss = width - 200;
+        let depth = 255;
+        let seed_start_x = createVector(random_abciss, height);
+        let seed_start_y = createVector(random_abciss, height - 1);
+        tree = new Tree(seed_start_x, seed_start_y, depth);
+        forest.push(tree);
+      } else {
+        canvas.style('top', '0px');
+        // Start tree from top right corner growing downward
+        let random_abciss = width - 200;
+        let depth = 255;
+        let seed_start_x = createVector(random_abciss, 0);
+        let seed_start_y = createVector(random_abciss, 1);
+        tree = new Tree(seed_start_x, seed_start_y, depth);
+        forest.push(tree);
+      }
     }
 
     function draw() {
@@ -702,7 +724,7 @@ export class HTMLGenerator {
     updateThemeIcon();
 
     const btn = document.getElementById('show-more');
-    const projects = document.querySelectorAll('#project-list .hidden');
+    const projects = document.querySelectorAll('.hidden');
     btn.addEventListener('click', () => {
       projects.forEach(p => p.classList.remove('hidden'));
       btn.style.display = 'none';

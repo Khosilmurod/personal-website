@@ -24,7 +24,7 @@ export const siteData: SiteData = {
       description: "full-stack pos for managing sales, inventory"
     },
     {
-      title: "asteroids game",
+      title: "space invaders",
       description: "game engine for asteroids shooter game"
     },
     {
@@ -56,8 +56,8 @@ export const siteData: SiteData = {
       year: "2021"
     },
     {
-      position: "software engineer",
-      company: "pdp.uz",
+      position: "software engineer intern",
+      company: "pdp.uz (online education platform)",
       year: "2021"
     }
   ],
