@@ -26,8 +26,8 @@ export class HTMLGenerator {
       <div class="flex-1"></div>
       <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
         <a href="about.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
-        <a href="experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
         <a href="projects.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
+        <a href="experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
         <a href="writing.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
       </nav>
     </div>
@@ -35,6 +35,12 @@ export class HTMLGenerator {
   }
 
   private generateHeroSection(): string {
+    const rawBio = this.data.personal.bio || '';
+    const bioHtml = rawBio
+      .replace(/(software engineering)/gi, '<span class="highlight">$1</span>')
+      .replace(/(systems programming)/gi, '<span class="highlight">$1</span>')
+      .replace(/(ai infrastructure)/gi, '<span class="highlight">$1</span>');
+
     return `
     <!-- hero / about -->
     <section class="py-4 md:py-6 space-y-3 p-6 rounded-xl card mb-2">
@@ -62,7 +68,7 @@ export class HTMLGenerator {
           </svg>
         </div>
       </div>
-      <p class="text-base max-w-prose" style="color: var(--text);">i am a computer science student at yale with a love for building systems that feel simple and fast. i grew up fascinated by how technology connects people, and now i focus on creating ai tools and platforms that are both reliable and delightful to use. my journey has been about constant learning, from <span class="highlight">operating systems</span> to large-scale <span class="highlight">ai assistants</span>, always with the goal of making complex things feel effortless.</p>
+      <p class="text-base max-w-prose" style="color: var(--text);">${bioHtml}</p>
     </section>`;
   }
 
@@ -71,7 +77,7 @@ export class HTMLGenerator {
     return `
         <li class="${hiddenClass} flex items-baseline text-sm relative navigable-item cursor-pointer hover:bg-opacity-50 transition-all" data-url="${project.url || '#'}">
           <span class="nav-indicator absolute -left-8 opacity-0 transition-opacity">→</span>
-          <span class="font-medium w-80 flex-shrink-0">${project.title}</span>
+          <span class="font-medium w-64 flex-shrink-0">${project.title}</span>
           <span class="flex-1 project-fade" style="color: var(--text-secondary);" title="${project.description}">${project.description}</span>
         </li>`;
   }
@@ -173,8 +179,8 @@ export class HTMLGenerator {
       <div class="flex-1"></div>
       <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
         <a href="../about.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
-        <a href="../experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
         <a href="../projects.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
+        <a href="../experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
         <a href="../writing.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
       </nav>
     </div>
@@ -284,23 +290,12 @@ export class HTMLGenerator {
       border-radius: 6px;
     }
     .highlight {
-      padding: 0 0.25rem;
-      display: inline;
-      position: relative;
-    }
-    .highlight::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: rgba(34, 197, 94, 0.15);
+      background: linear-gradient(to bottom, transparent 60%, rgba(34, 197, 94, 0.3) 60%);
+      padding: 0 0.125rem;
       border-radius: 0.125rem;
-      z-index: -1;
     }
-    .dark .highlight::after {
-      background: rgba(34, 197, 94, 0.2);
+    .dark .highlight {
+      background: linear-gradient(to bottom, transparent 60%, rgba(34, 197, 94, 0.4) 60%);
     }
     
     /* Blog-specific styling */
@@ -384,8 +379,8 @@ export class HTMLGenerator {
       <div class="flex-1"></div>
       <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
         <a href="about.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
-        <a href="experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
         <a href="projects.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
+        <a href="experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
         <a href="writing.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
       </nav>
     </div>
@@ -789,28 +784,12 @@ export class HTMLGenerator {
       border-radius: 6px;
     }
     .highlight {
-      padding: 0 0.25rem;
-      display: inline;
-      position: relative;
-    }
-    .highlight::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 40%;
-      background: rgba(34, 197, 94, 0.15);
+      background: linear-gradient(to bottom, transparent 60%, rgba(34, 197, 94, 0.3) 60%);
+      padding: 0 0.125rem;
       border-radius: 0.125rem;
-      z-index: -1;
     }
-    .dark .highlight::after {
-      background: rgba(34, 197, 94, 0.2);
-    } position: fixed !important;
-      top: 0 !important;
-      right: 0 !important;
-      z-index: -1 !important;
-      opacity: 0.3;
+    .dark .highlight {
+      background: linear-gradient(to bottom, transparent 60%, rgba(34, 197, 94, 0.4) 60%);
     }
   </style>
 </head>
@@ -819,8 +798,8 @@ ${this.generateHeader()}
 
   <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-16">
 ${this.generateHeroSection()}
-${this.generateExperienceSection()}
 ${this.generateProjectsSection()}
+${this.generateExperienceSection()}
 ${this.generateWritingSection()}
 ${this.generateContactSection()}
 ${this.generateFooter()}

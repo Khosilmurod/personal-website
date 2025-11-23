@@ -18,6 +18,16 @@ const experience = await svc.listExperience();
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .highlight {
+      background: linear-gradient(to bottom, transparent 60%, rgba(34, 197, 94, 0.3) 60%);
+      padding: 0 0.125rem;
+      border-radius: 0.125rem;
+    }
+    .dark .highlight {
+      background: linear-gradient(to bottom, transparent 60%, rgba(34, 197, 94, 0.4) 60%);
+    }
+  </style>
   <script>
     // Dark mode initialization - runs before the page loads to prevent flash
     (function() {
@@ -50,8 +60,8 @@ const experience = await svc.listExperience();
       <div class="flex-1"></div>
       <nav class="text-sm flex items-center gap-6">
         <a href="#about" class="hover:opacity-80">about</a>
-        <a href="#experience" class="hover:opacity-80">experience</a>
         <a href="#projects" class="hover:opacity-80">projects</a>
+        <a href="#experience" class="hover:opacity-80">experience</a>
         <a href="#writing" class="hover:opacity-80">writing</a>
         <a href="#contact" class="hover:opacity-80">contact</a>
       </nav>
@@ -62,7 +72,20 @@ const experience = await svc.listExperience();
     <!-- hero / about -->
     <section id="about" class="py-10 md:py-12 space-y-3">
       <p class="section-title">software engineer</p>
-      <p class="text-base text-zinc-600 dark:text-zinc-300 max-w-prose">i am a computer science student at yale with a love for building systems that feel simple and fast. i grew up fascinated by how technology connects people, and now i focus on creating ai tools and platforms that are both reliable and delightful to use. my journey has been about constant learning, from operating systems to large-scale ai assistants, always with the goal of making complex things feel effortless.</p>
+      <p class="text-base text-zinc-600 dark:text-zinc-300 max-w-prose">i am a computer science student at yale university. my work focuses on <span class="highlight">software engineering</span>, <span class="highlight">systems programming</span>, and <span class="highlight">ai infrastructure</span> (especially backend services in c++ and python). i would like to help build the backend systems and infrastructure that power large-scale products, from core services to ai platforms.</p>
+    </section>
+
+    <!-- experience -->
+    <section id="experience" class="py-10 md:py-12 space-y-6">
+      <p class="section-title">experience</p>
+      <ul class="space-y-3">
+        {experience.map(exp => (
+          <li class="flex justify-between text-sm">
+            <span class="font-medium">{exp.company}</span>
+            <span class="text-zinc-500">{exp.role} · {exp.year}</span>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <!-- projects -->
@@ -92,19 +115,6 @@ const experience = await svc.listExperience();
           </button>
         </div>
       )}
-    </section>
-
-    <!-- experience -->
-    <section id="experience" class="py-10 md:py-12 space-y-6">
-      <p class="section-title">experience</p>
-      <ul class="space-y-3">
-        {experience.map(exp => (
-          <li class="flex justify-between text-sm">
-            <span class="font-medium">{exp.company}</span>
-            <span class="text-zinc-500">{exp.role} · {exp.year}</span>
-          </li>
-        ))}
-      </ul>
     </section>
 
     <!-- writing -->

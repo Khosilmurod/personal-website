@@ -4,7 +4,7 @@ export const siteData: SiteData = {
   personal: {
     name: "khosilmurod",
     title: "software engineer",
-    bio: "i am a computer science student at yale with a love for building systems that feel simple and fast. i grew up fascinated by how technology connects people, and now i focus on creating ai tools and platforms that are both reliable and delightful to use. my journey has been about constant learning, from operating systems to large-scale ai assistants, always with the goal of making complex things feel effortless.",
+    bio: "i am a computer science student at yale university. my work focuses on software engineering, systems programming, and ai infrastructure (especially backend services in c++ and python). i would like to help build the backend systems and infrastructure that power large-scale products, from core services to ai platforms.",
     email: "m.abdukholikov@yale.edu",
     linkedin: "https://linkedin.com/in/khosilmurod",
     github: "https://github.com/khosilmurod"
@@ -16,35 +16,30 @@ export const siteData: SiteData = {
       description: "ai assistant for yale campus information"
     },
     {
-      title: "weensyos mods",
-      description: "teaching os with memory isolation and threading"
+      title: "weensyos operating system",
+      description: "virtual memory in toy operating system"
     },
     {
-      title: "mesh nodes",
-      description: "solar raspberry pi mesh for offline communication"
+      title: "point-of-sale system",
+      description: "full-stack pos for managing sales, inventory"
     },
     {
-      title: "navi",
-      description: "minimal chat platform for ai experiments"
+      title: "asteroids game",
+      description: "game engine for asteroids shooter game"
     },
     {
-      title: "astro-blog",
-      description: "fast markdown blog with instant loading",
+      title: "smart vase!",
+      description: "embedded systems smart plant vase",
       hidden: true
     },
-    {
-      title: "cursor-tools",
-      description: "tiny macos utilities for cursor automation",
-      hidden: true
-    }
+    // {
+    //   title: "cursor-tools",
+    //   description: "tiny macos utilities for cursor automation",
+    //   hidden: true
+    // }
   ],
 
   experience: [
-    {
-      position: "co-founder",
-      company: "yale-gpt",
-      year: "2025"
-    },
     {
       position: "undergraduate researcher",
       company: "interactive machines group @ yale",
