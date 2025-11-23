@@ -31,12 +31,7 @@ export const siteData: SiteData = {
       title: "smart vase!",
       description: "embedded systems smart plant vase",
       hidden: true
-    },
-    // {
-    //   title: "cursor-tools",
-    //   description: "tiny macos utilities for cursor automation",
-    //   hidden: true
-    // }
+    }
   ],
 
   experience: [
@@ -68,15 +63,15 @@ export const siteData: SiteData = {
       url: "blog/yale-gpt-design.html",
       slug: "yale-gpt-design"
     },
-    {
-      title: "what i learned from modifying an operating system",
-      url: "blog/operating-system-lessons.html",
-      slug: "operating-system-lessons"
-    },
-    {
-      title: "building tools for communities without internet",
-      url: "blog/offline-communication-tools.html",
-      slug: "offline-communication-tools"
-    }
+    // {
+    //   title: "what i learned from modifying an operating system",
+    //   url: "blog/operating-system-lessons.html",
+    //   slug: "operating-system-lessons"
+    // },
+    // {
+    //   title: "building tools for communities without internet",
+    //   url: "blog/offline-communication-tools.html",
+    //   slug: "offline-communication-tools"
+    // }
   ]
 };

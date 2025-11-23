@@ -884,8 +884,8 @@ ${this.generateHeader()}
 
   <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-16">
 ${this.generateHeroSection()}
-${this.generateProjectsSection()}
 ${this.generateExperienceSection()}
+${this.generateProjectsSection()}
 ${this.generateWritingSection()}
 ${this.generateContactSection()}
 ${this.generateFooter()}
