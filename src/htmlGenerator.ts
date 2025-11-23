@@ -46,7 +46,7 @@ export class HTMLGenerator {
     <section class="py-4 md:py-6 space-y-3 p-6 rounded-xl card mb-2">
       <div class="flex items-start justify-between">
         <div class="flex-1 pr-6">
-          <h1 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--text);">khosilmurod abdukholikov</h1>
+          <h1 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--text); margin-top:2.5rem;">khosilmurod abdukholikov</h1>
           <p class="section-title">${this.data.personal.title}</p>
           <div class="flex items-center gap-3 mt-3">
         <a href="${this.data.personal.github}" target="_blank" rel="noopener noreferrer" class="transition-colors hover:opacity-80" style="color: var(--text-secondary);" aria-label="GitHub">
@@ -62,13 +62,13 @@ export class HTMLGenerator {
             <a href="mailto:${this.data.personal.email}" class="px-2.5 py-1 text-xs font-semibold bg-gray-50 dark:bg-gray-900/30 text-gray-700 dark:text-gray-200 rounded-md hover:opacity-80 transition-opacity cursor-pointer" aria-label="Send email">${this.data.personal.email}</a>
           </div>
         </div>
-        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0">
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center flex-shrink-0" style="margin-top:2.5rem;">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-gray-500 dark:text-gray-400">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
           </svg>
         </div>
       </div>
-      <p class="text-base max-w-prose" style="color: var(--text);">${bioHtml}</p>
+      <p class="text-base" style="color: var(--text);">${bioHtml}</p>
     </section>`;
   }
 
@@ -85,16 +85,84 @@ export class HTMLGenerator {
   private generateProjectsSection(): string {
     const projectCards = this.data.projects.map(project => this.generateProjectCard(project)).join('');
     
+      // Example project data (replace with your actual data structure)
+      const projects = [
+        {
+          name: "yale-gpt",
+          subtitle: "ai assistant for yale campus information",
+          meta: "c++, python · infra, rag, search",
+          links: { repo: "#", demo: "#", blog: "#" },
+        },
+        {
+          name: "weensyos operating system",
+          subtitle: "virtual memory in toy operating system",
+          meta: "c · paging, isolation, processes",
+          links: { repo: "#", demo: "#", blog: "#" },
+        },
+        {
+          name: "point-of-sale system",
+          subtitle: "full-stack pos for managing sales, inventory",
+          meta: "spring boot, react · postgres, mongo",
+          links: { repo: "#", demo: "#", blog: "#" },
+        },
+        {
+          name: "asteroids game",
+          subtitle: "game engine for asteroids shooter game",
+          meta: "c++ · sdl2, custom engine",
+          links: { repo: "#", demo: "#", blog: "#" },
+        },
+      ];
+
+    // SVG icons
+    const githubIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`;
+    const arrowUpRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M7 7h10v10"/></svg>`;
+    const linkIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14L21 3m-4 0h4v4"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17H7a4 4 0 01-4-4V7a4 4 0 014-4h6"/></svg>`;
+
+    // Project link button
+    function projectLink(label: string, icon: string, href: string) {
+      return `<a href="${href}" aria-label="${label}" class="inline-flex items-center gap-1 rounded-full border border-neutral-200/80 bg-white/70 px-2.5 py-1 text-xs font-medium lowercase tracking-wide text-neutral-700 shadow-sm transition-all duration-150 hover:border-neutral-400 hover:bg-white hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-emerald-200">${icon}<span style="font-family: 'EB Garamond', serif; font-size: 1em;">${label}</span></a>`;
+    }
+
+    // Projects window markup
     return `
-    <!-- projects -->
-    <section id="projects" class="py-6 md:py-8 space-y-6 p-6 rounded-xl card mb-2">
-      <p class="section-title" style="color: var(--muted);">projects</p>
-      <ul id="project-list" class="space-y-3">${projectCards}
-      </ul>
-      <div class="pt-4">
-        <button id="show-more" class="text-sm transition-colors font-medium hover:opacity-80" style="color: var(--text-tertiary);">
-          + more projects
-        </button>
+    <section class="mt-20 max-w-4xl rounded-3xl border border-neutral-200/70 bg-white/80 shadow-[0_18px_45px_rgba(15,23,42,0.06)] backdrop-blur-sm mx-auto">
+      <!-- window header -->
+      <div class="flex items-center justify-between border-b border-neutral-200/80 px-4 py-2">
+        <div class="flex items-center gap-1.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+        </div>
+        <h2 class="section-title" style="font-family: 'EB Garamond', serif; font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .15em; text-transform: lowercase;">projects</h2>
+        <div class="h-2 w-8 rounded-full bg-neutral-100"></div>
+      </div>
+      <!-- window body -->
+      <div class="grid gap-2 px-4 py-4 md:px-6 md:py-5">
+        <!-- column labels -->
+        <div class="divide-y divide-neutral-200/80">
+          ${projects.map((project, idx) => `
+            <article class="group flex flex-col gap-3 py-3 md:flex-row md:items-center md:gap-4 transition-all duration-150 hover:bg-neutral-50/60" tabindex="0" style="font-family: 'EB Garamond', serif; font-size: 15px;">
+              <div class="flex flex-1 items-start gap-2">
+                <div class="mt-1 hidden h-3 w-3 flex-none items-center justify-center rounded-full border border-neutral-200 text-[9px] text-neutral-400 group-hover:border-neutral-500 group-hover:text-neutral-700 md:flex"><span>↘</span></div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <h3 class="font-semibold lowercase tracking-tight text-neutral-900" style="font-family: 'EB Garamond', serif; font-size: 15px; font-weight: 700;">${project.name}</h3>
+                    ${idx === 0 ? `<span class="rounded-full border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[11px] font-normal lowercase text-emerald-700 shadow-sm" style="font-family: 'EB Garamond', serif; font-size: 11px; font-weight: 500;">featured</span>` : ""}
+                  </div>
+                  <p class="mt-0.5 leading-snug text-neutral-500" style="font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 400;">${project.subtitle}</p>
+                </div>
+              </div>
+                <div class="md:w-[32%] text-center">
+                  <p class="leading-snug text-neutral-400 md:text-center" style="font-family: 'EB Garamond', serif; font-size: 13px; font-weight: 400;">${project.meta}</p>
+              </div>
+              <div class="flex flex-wrap justify-start gap-1.5 md:w-[28%] md:justify-end">
+                ${projectLink("repo", githubIcon, project.links.repo)}
+                ${projectLink("demo", arrowUpRightIcon, project.links.demo)}
+                ${projectLink("notes", linkIcon, project.links.blog)}
+              </div>
+            </article>
+          `).join('')}
+        </div>
       </div>
     </section>`;
   }
@@ -142,7 +210,7 @@ export class HTMLGenerator {
     <!-- contact -->
     <section id="contact" class="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-8">
       <p class="section-title">contact</p>
-      <p class="text-base max-w-prose" style="color: var(--text);">say hi at <a href="mailto:m.abdukholikov@yale.edu" class="underline hover:opacity-80" style="color: var(--text);">m.abdukholikov@yale.edu</a> or find me on <a href="${this.data.personal.linkedin}" class="hover:underline" style="color: var(--text);">linkedin</a> and <a href="${this.data.personal.github}" class="hover:underline" style="color: var(--text);">github</a>.</p>
+      <p class="text-base max-w-prose" style="color: var(--text);">say hi at <a href="mailto:m.abdukholikov@yale.edu" class="underline hover:opacity-80" style="color: var(--text);">m.abdukholikov@yale.edu</a> or find me on <a href="${this.data.personal.linkedin}" class="underline hover:opacity-80" style="color: var(--text);">linkedin</a> and <a href="${this.data.personal.github}" class="underline hover:opacity-80" style="color: var(--text);">github</a>.</p>
     </section>`;
   }
 
@@ -186,7 +254,7 @@ export class HTMLGenerator {
     </div>
   </header>
 
-  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-16">
+  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-28">
     <article class="py-6 md:py-8 space-y-6 p-6 rounded-xl card">
       <header class="space-y-3">
         <h1 class="text-3xl md:text-4xl font-bold" style="color: var(--text); text-transform: none;">${writing.title}</h1>
