@@ -24,11 +24,11 @@ export class HTMLGenerator {
         <span style="font-weight: 900; color: var(--text);">${this.data.personal.name}</span>
       </a>
       <div class="flex-1"></div>
-      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
-        <a href="about.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
-        <a href="projects.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
-        <a href="experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
-        <a href="writing.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
+      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 700; color: var(--text);">
+        <a href="about.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">about</a>
+        <a href="projects.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">projects</a>
+        <a href="experience.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">experience</a>
+        <a href="writing.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">writing</a>
       </nav>
     </div>
   </header>`;
@@ -181,8 +181,8 @@ export class HTMLGenerator {
     return `
         <li class="flex items-baseline text-sm relative navigable-item cursor-pointer hover:bg-opacity-50 transition-all" data-url="${exp.url || '#'}">
           <span class="nav-indicator absolute -left-8 opacity-0 transition-opacity">→</span>
-          <span class="font-medium w-80 flex-shrink-0">${exp.company}</span>
-          <span class="flex-1" style="color: var(--text-secondary);">${exp.position} · ${exp.year}</span>
+          <span class="font-medium w-96 flex-shrink-0">${exp.company}</span>
+          <span class="flex-1 ml-6" style="color: var(--text-secondary);">${exp.position} · ${exp.year}</span>
         </li>`;
   }
 
@@ -228,11 +228,15 @@ export class HTMLGenerator {
     const content = writing.content || this.generateDefaultBlogContent(writing);
     
     return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${writing.title} - ${this.data.personal.name}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -241,7 +245,7 @@ export class HTMLGenerator {
   </script>
   ${this.getStylesForBlogPost()}
 </head>
-<body>
+<body class="antialiased" style="background: var(--bg); color: var(--text);">
   <!-- theme toggle - fixed at right edge -->
   <div class="fixed right-0 z-30 flex items-center" style="top: 12px; padding-right: 32px;">
     <span id="theme-toggle" onclick="toggleDarkMode()" class="cursor-pointer hover:opacity-80" style="font-size: 16px;">☀️</span>
@@ -255,31 +259,30 @@ export class HTMLGenerator {
         <span style="font-weight: 900; color: var(--text);">${this.data.personal.name}</span>
       </a>
       <div class="flex-1"></div>
-      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
-        <a href="../about.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
-        <a href="../projects.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
-        <a href="../experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
-        <a href="../writing.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
+      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 700; color: var(--text);">
+        <a href="../about.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">about</a>
+        <a href="../projects.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">projects</a>
+        <a href="../experience.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">experience</a>
+        <a href="../writing.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">writing</a>
       </nav>
     </div>
   </header>
 
-  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-28">
-    <article class="py-6 md:py-8 space-y-6 p-6 rounded-xl card">
-      <header class="space-y-3">
-        <h1 class="text-3xl md:text-4xl font-bold" style="color: var(--text); text-transform: none;">${writing.title}</h1>
-        <div class="text-sm" style="color: var(--text-secondary);">
-          <time>published recently</time>
-        </div>
-      </header>
-      
+  <main id="top" class="mx-auto w-full max-w-[var(--container)] px-5 pt-16">
+    <section class="py-4 md:py-6 space-y-3 p-6 rounded-xl card mb-2">
+      <h1 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--text);">${writing.title}</h1>
+      <div class="text-sm" style="color: var(--text-secondary);">
+        <time>published recently</time>
+      </div>
       <div class="prose max-w-none" style="color: var(--text);">
         ${content}
       </div>
-    </article>
+    </section>
   </main>
   
   ${this.generateJavaScript()}
+  ${this.generateTreeScript('top')}
+  ${this.generateTreeScript('bottom')}
 </body>
 </html>`;
   }
@@ -378,13 +381,15 @@ export class HTMLGenerator {
     
     /* Blog-specific styling */
     .prose {
-      line-height: 1.7;
+      line-height: normal;
     }
     .prose p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
+      font-size: 1rem;
+      line-height: normal;
     }
     .prose ul {
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
       padding-left: 1.5rem;
     }
     .prose li {
@@ -455,11 +460,11 @@ export class HTMLGenerator {
         <span style="font-weight: 900; color: var(--text);">${this.data.personal.name}</span>
       </a>
       <div class="flex-1"></div>
-      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 900; color: var(--text);">
-        <a href="about.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">about</a>
-        <a href="projects.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">projects</a>
-        <a href="experience.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">experience</a>
-        <a href="writing.html" class="hover:opacity-80" style="font-weight: 900; color: var(--text);">writing</a>
+      <nav class="flex items-center gap-6" style="letter-spacing: 0.15em; text-transform: lowercase; font-size: 12px; font-weight: 700; color: var(--text);">
+        <a href="about.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">about</a>
+        <a href="projects.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">projects</a>
+        <a href="experience.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">experience</a>
+        <a href="writing.html" class="hover:opacity-80" style="font-weight: 700; color: var(--text);">writing</a>
       </nav>
     </div>
   </header>
@@ -640,29 +645,18 @@ export class HTMLGenerator {
     function setup() {
       let canvas = createCanvas(windowWidth, windowHeight);
       canvas.style('position', 'fixed');
-      canvas.style('z-index', '-1');
-      canvas.style('pointer-events', 'none');
-      canvas.style('opacity', '0.3');
+      canvas.style('top', '0px');
       canvas.style('right', '0px');
-      if ('${position}' === 'bottom') {
-        canvas.style('bottom', '0px');
-        // Start tree from bottom right corner growing upward
-        let random_abciss = width - 200;
-        let depth = 255;
-        let seed_start_x = createVector(random_abciss, height);
-        let seed_start_y = createVector(random_abciss, height - 1);
-        tree = new Tree(seed_start_x, seed_start_y, depth);
-        forest.push(tree);
-      } else {
-        canvas.style('top', '0px');
-        // Start tree from top right corner growing downward
-        let random_abciss = width - 200;
-        let depth = 255;
-        let seed_start_x = createVector(random_abciss, 0);
-        let seed_start_y = createVector(random_abciss, 1);
-        tree = new Tree(seed_start_x, seed_start_y, depth);
-        forest.push(tree);
-      }
+      canvas.style('z-index', '-1');
+      canvas.style('opacity', '0.3');
+      
+      // Start tree from top right corner growing downward
+      let random_abciss = width - 200;
+      let depth = 255;
+      let seed_start_x = createVector(random_abciss, 0);
+      let seed_start_y = createVector(random_abciss, 1);
+      tree = new Tree(seed_start_x, seed_start_y, depth);
+      forest.push(tree);
     }
 
     function draw() {
@@ -681,7 +675,9 @@ export class HTMLGenerator {
     function windowResized() {
       resizeCanvas(windowWidth, windowHeight);
     }
-  </script>`;
+  </script>
+</body>
+</html>`;
   }
 
   private generateFooter(): string {
