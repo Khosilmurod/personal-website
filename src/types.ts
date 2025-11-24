@@ -5,6 +5,13 @@ export interface Project {
   description: string;
   url?: string;
   hidden?: boolean;
+  subtitle?: string;
+  meta?: string;
+  links?: {
+    repo?: string;
+    demo?: string;
+    blog?: string;
+  };
 }
 
 export interface Experience {

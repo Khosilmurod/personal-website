@@ -13,24 +13,38 @@ export const siteData: SiteData = {
   projects: [
     {
       title: "yale-gpt",
-      description: "ai assistant for yale campus information"
+      description: "ai assistant for yale campus information",
+      subtitle: "ai assistant for yale campus information",
+      meta: "c++, python · infra, rag, search",
+      links: { repo: "#", demo: "#", blog: "#" }
     },
     {
       title: "weensyos operating system",
-      description: "virtual memory in toy operating system"
+      description: "virtual memory in toy operating system",
+      subtitle: "virtual memory in toy operating system",
+      meta: "c · paging, isolation, processes",
+      links: { repo: "https://github.com/Khosilmurod/WeensyOS", demo: "#", blog: "#" }
     },
     {
       title: "point-of-sale system",
-      description: "full-stack pos for managing sales, inventory"
+      description: "full-stack pos for managing sales, inventory",
+      subtitle: "full-stack pos for managing sales, inventory",
+      meta: "spring boot, react · postgres, mongo",
+      links: { repo: "https://github.com/Khosilmurod/pos-system", demo: "#", blog: "#" }
     },
     {
       title: "space invaders",
-      description: "game engine for asteroids shooter game"
+      description: "game engine for asteroids shooter game",
+      subtitle: "game engine for asteroids shooter game",
+      meta: "c++ · sdl2, custom engine",
+      links: { repo: "https://github.com/Khosilmurod/space-invaders", demo: "#", blog: "#" }
     },
     {
       title: "smart vase!",
       description: "embedded systems smart plant vase",
-      hidden: true
+      subtitle: "embedded systems smart plant vase",
+      meta: "arduino, sensors · iot, automation",
+      links: { repo: "#", demo: "#", blog: "#" }
     }
   ],
 
@@ -58,11 +72,11 @@ export const siteData: SiteData = {
   ],
 
   writing: [
-    {
-      title: "how i designed yale-gpt to feel fast and simple",
-      url: "blog/yale-gpt-design.html",
-      slug: "yale-gpt-design"
-    },
+    // {
+    //   title: "how i designed yale-gpt to feel fast and simple",
+    //   url: "blog/yale-gpt-design.html",
+    //   slug: "yale-gpt-design"
+    // },
     // {
     //   title: "what i learned from modifying an operating system",
     //   url: "blog/operating-system-lessons.html",
