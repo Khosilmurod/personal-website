@@ -43,7 +43,7 @@ export const siteData: SiteData = {
       title: "smart vase!",
       description: "embedded systems smart plant vase",
       subtitle: "embedded systems smart plant vase",
-      meta: "arduino, sensors · iot, automation",
+      meta: "esp32, sensors · iot, automation",
       links: { repo: "#", demo: "#", blog: "#" }
     }
   ],
