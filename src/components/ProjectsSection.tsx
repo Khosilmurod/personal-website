@@ -62,7 +62,10 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   const visible = showAll ? projects : projects.filter((p) => !p.hidden)
 
   return (
-    <section className="mt-12 max-w-4xl rounded-3xl border border-neutral-200/70 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 shadow-[0_18px_45px_rgba(15,23,42,0.06)] backdrop-blur-sm mx-auto">
+    <section
+      className="mt-12 max-w-4xl rounded-3xl border border-neutral-200/70 dark:border-zinc-800 shadow-[0_18px_45px_rgba(15,23,42,0.06)] mx-auto"
+      style={{ background: 'var(--card-bg)' }}
+    >
       <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-zinc-700 px-4 py-2">
         <div className="flex items-center gap-1.5">
           <span className="h-2.5 w-2.5 rounded-full bg-red-400" />

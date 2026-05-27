@@ -154,7 +154,7 @@ export function FractalTree() {
 
         p.draw = () => {
           const isDark = document.documentElement.classList.contains('dark')
-          p.background(isDark ? 0 : 255)
+          isDark ? p.background(28, 28, 30) : p.background(255)
           for (const tree of forest) {
             tree.grows()
             tree.shows()

@@ -44,7 +44,7 @@ export function HeroSection({ personal }: { personal: Personal }) {
             className="text-2xl md:text-3xl font-bold mb-2"
             style={{ color: 'var(--text)', marginTop: '2.5rem' }}
           >
-            khosilmurod abdukholikov
+            murad abdukholikov
           </h1>
           <div className="flex items-center gap-3 mt-3">
             <a
