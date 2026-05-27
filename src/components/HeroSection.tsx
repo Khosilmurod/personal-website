@@ -34,7 +34,7 @@ function highlightBio(bio: string) {
 }
 
 export function HeroSection({ personal }: { personal: Personal }) {
-  const bioHtml = highlightBio(personal.bio)
+  const bioParagraphs = personal.bio.split('\n\n').map(highlightBio)
 
   return (
     <section className="py-4 md:py-6 space-y-3 p-6 rounded-xl card mb-2">
@@ -46,8 +46,6 @@ export function HeroSection({ personal }: { personal: Personal }) {
           >
             khosilmurod abdukholikov
           </h1>
-          <p className="section-title">{personal.title}</p>
-
           <div className="flex items-center gap-3 mt-3">
             <a
               href={personal.github}
@@ -71,45 +69,26 @@ export function HeroSection({ personal }: { personal: Personal }) {
             </a>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 mt-3">
-            <a
-              href="https://www.yale.edu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-2.5 py-1 text-xs font-semibold bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-200 rounded-md hover:opacity-80 transition-opacity"
-            >
-              yale &apos;27
-            </a>
-            <a
-              href="https://interactive-machines.gitlab.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-2.5 py-1 text-xs font-semibold bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-200 rounded-md hover:opacity-80 transition-opacity"
-            >
-              interactive machines group
-            </a>
-            <a
-              href={`mailto:${personal.email}`}
-              className="px-2.5 py-1 text-xs font-semibold bg-gray-50 dark:bg-gray-900/30 text-gray-700 dark:text-gray-200 rounded-md hover:opacity-80 transition-opacity"
-            >
-              {personal.email}
-            </a>
-          </div>
         </div>
 
         <div
           className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center flex-shrink-0 text-gray-500 dark:text-gray-400"
-          style={{ marginTop: '2.5rem' }}
+          style={{ marginTop: '1rem' }}
         >
           <PersonIcon />
         </div>
       </div>
 
-      <p
-        className="text-base"
-        style={{ color: 'var(--text)' }}
-        dangerouslySetInnerHTML={{ __html: bioHtml }}
-      />
+      <div className="space-y-3 mt-20">
+        {bioParagraphs.map((html, i) => (
+          <p
+            key={i}
+            className="text-base"
+            style={{ color: 'var(--text)' }}
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        ))}
+      </div>
     </section>
   )
 }

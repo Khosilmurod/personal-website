@@ -4,7 +4,7 @@ export const siteData: SiteData = {
   personal: {
     name: 'khosilmurod',
     title: 'software engineer',
-    bio: 'i am a computer science student at yale university. my work focuses on software engineering, systems programming, and ai infrastructure (especially backend services in c++ and python). i would like to help build the backend systems and infrastructure that power large-scale products, from core services to ai platforms.',
+    bio: 'I am a Computer Science student at Yale.\n\nI grew up in rural Uzbekistan farming cattle and apple trees before becoming obsessed with technology and the future of the physical world. I got my first internet connection at 14 by climbing a tree to catch a phone signal.\n\nNow I build robots for farms.\n\nI believe ambition is a moral obligation, civilization is still early, and the most important things in the world are still left to build.',
     email: 'm.abdukholikov@yale.edu',
     linkedin: 'https://linkedin.com/in/khosilmurod',
     github: 'https://github.com/khosilmurod',
@@ -12,62 +12,36 @@ export const siteData: SiteData = {
 
   projects: [
     {
-      title: 'yale-gpt',
-      description: 'ai assistant for yale campus information',
-      subtitle: 'ai assistant for yale campus information',
-      meta: 'c++, python · infra, rag, search',
+      title: 'wearable headset',
+      description: 'egocentric data collection headset built at a startup',
+      subtitle: 'egocentric data collection headset built at a startup',
+      meta: 'embedded, c++ · sensors, hardware',
       links: { repo: '#', demo: '#', blog: '#' },
     },
     {
-      title: 'weensyos operating system',
-      description: 'virtual memory in toy operating system',
-      subtitle: 'virtual memory in toy operating system',
-      meta: 'c · paging, isolation, processes',
-      links: { repo: 'https://github.com/Khosilmurod/WeensyOS', demo: '#', blog: '#' },
+      title: 'embedded escape room',
+      description: 'sensor-driven embedded escape room',
+      subtitle: 'sensor-driven embedded escape room',
+      meta: 'embedded · sensors, puzzles',
+      links: { repo: '#', demo: '#', blog: '#' },
     },
     {
       title: 'point-of-sale system',
-      description: 'full-stack pos for managing sales, inventory',
-      subtitle: 'full-stack pos for managing sales, inventory',
+      description: 'full-stack pos sold to a local jewelry chain at 15',
+      subtitle: 'full-stack pos sold to a local jewelry chain at 15',
       meta: 'spring boot, react · postgres, mongo',
       links: { repo: 'https://github.com/Khosilmurod/pos-system', demo: '#', blog: '#' },
-    },
-    {
-      title: 'space invaders',
-      description: 'game engine for asteroids shooter game',
-      subtitle: 'game engine for asteroids shooter game',
-      meta: 'c++ · sdl2, custom engine',
-      links: { repo: 'https://github.com/Khosilmurod/space-invaders', demo: '#', blog: '#' },
-    },
-    {
-      title: 'smart vase!',
-      description: 'embedded systems smart plant vase',
-      subtitle: 'embedded systems smart plant vase',
-      meta: 'esp32, sensors · iot, automation',
-      links: { repo: '#', demo: '#', blog: '#' },
     },
   ],
 
   experience: [
     {
+      position: 'software engineer intern',
+      company: 'adobe',
+    },
+    {
       position: 'undergraduate researcher',
       company: 'interactive machines group @ yale',
-      year: '2025',
-    },
-    {
-      position: 'student programmer',
-      company: 'levy decision lab @ yale',
-      year: '2025',
-    },
-    {
-      position: 'full stack developer',
-      company: 'star jewelry',
-      year: '2021',
-    },
-    {
-      position: 'software engineer intern',
-      company: 'pdp.uz (online education platform)',
-      year: '2021',
     },
   ],
 

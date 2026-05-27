@@ -24,7 +24,7 @@ export interface Project {
 export interface Experience {
   position: string
   company: string
-  year: string
+  year?: string
   url?: string
 }
 
