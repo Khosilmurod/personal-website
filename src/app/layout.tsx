@@ -7,6 +7,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'khosilmurod — engineer',
   description: 'minimal, fast personal site for a developer.',
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -10,10 +10,10 @@ export function ExperienceSection({ experience }: { experience: Experience[] }) 
         {experience.map((exp) => (
           <li
             key={`${exp.company}-${exp.position}`}
-            className="flex items-baseline text-sm relative"
+            className="flex flex-col sm:flex-row sm:items-baseline text-sm relative gap-0.5 sm:gap-0"
           >
-            <span className="font-medium w-64 flex-shrink-0">{exp.company}</span>
-            <span className="ml-16 flex-shrink-0" style={{ color: 'var(--text-secondary)' }}>
+            <span className="font-medium sm:w-64 sm:flex-shrink-0">{exp.company}</span>
+            <span className="sm:ml-16 sm:flex-shrink-0" style={{ color: 'var(--text-secondary)' }}>
               {exp.position}
             </span>
           </li>
