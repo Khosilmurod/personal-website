@@ -4,6 +4,8 @@
 
 :root {
   --container: 46rem;
+  --font-nav: 'Space Mono', monospace;
+  --font-body: 'EB Garamond', serif;
   --bg: #ffffff;
   --bg-rgb: 255, 255, 255;
   --text: #18181b;
@@ -39,7 +41,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url('/alexander.jpg');
+  background-image: var(--bg-image, url('/alexander.jpg'));
   background-position: calc(100% + 20vw) center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,17 +67,18 @@ p,
 a,
 li,
 span {
-  font-family: 'EB Garamond', serif;
+  font-family: var(--font-body);
   text-transform: lowercase;
   font-size: 1.05em;
   font-weight: 500;
 }
 
 .section-title {
-  letter-spacing: 0.15em;
+  font-family: var(--font-nav);
+  letter-spacing: 0.1em;
   text-transform: lowercase;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 400;
   color: var(--muted);
 }
 

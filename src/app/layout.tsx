@@ -1,14 +1,8 @@
 import type { Metadata } from 'next'
-import { EB_Garamond } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Header } from '@/components/Header'
+import { FontPicker } from '@/components/FontPicker'
 import './globals.css'
-
-const ebGaramond = EB_Garamond({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-eb-garamond',
-})
 
 export const metadata: Metadata = {
   title: 'khosilmurod — engineer',
@@ -17,12 +11,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`scroll-smooth ${ebGaramond.variable}`} suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem('theme')!=='light'){document.documentElement.classList.add('dark')}}catch(e){document.documentElement.classList.add('dark')}`,
+            __html: `try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}`,
           }}
         />
       </head>
@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <ThemeProvider>
           <Header name="khosilmurod" />
+          <FontPicker />
           {children}
         </ThemeProvider>
       </body>
