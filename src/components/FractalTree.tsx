@@ -148,13 +148,12 @@ export function FractalTree() {
           canvas.style('z-index', '-1')
           canvas.style('opacity', '0.3')
 
-          const startX = p.width - 200
+          const startX = 200
           forest.push(new Tree(p.createVector(startX, 0), p.createVector(startX, 1), 255))
         }
 
         p.draw = () => {
-          const isDark = document.documentElement.classList.contains('dark')
-          isDark ? p.background(28, 28, 30) : p.background(255)
+          p.clear()
           for (const tree of forest) {
             tree.grows()
             tree.shows()
