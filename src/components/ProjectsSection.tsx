@@ -109,14 +109,6 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
                     >
                       {project.title}
                     </h3>
-                    {idx === 0 && (
-                      <span
-                        className="rounded-full border border-emerald-300 dark:border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 text-[11px] font-normal lowercase text-emerald-700 dark:text-emerald-200 shadow-sm"
-                        style={{ fontFamily: "'EB Garamond', serif", fontSize: 11, fontWeight: 500 }}
-                      >
-                        featured
-                      </span>
-                    )}
                   </div>
                   <p
                     className="mt-0.5 leading-snug text-neutral-500 dark:text-zinc-400"

@@ -23,7 +23,7 @@ export const siteData: SiteData = {
       description: 'sensor-driven embedded escape room',
       subtitle: 'sensor-driven embedded escape room',
       meta: 'embedded · sensors, puzzles',
-      links: { repo: '#', demo: '#', blog: '#' },
+      links: { repo: '#', demo: '#', blog: 'https://www.notion.so/Interactive-Networked-Escape-Room-2f8365540f1a8031a14ed8a08b4277a3' },
     },
     {
       title: 'point-of-sale system',
