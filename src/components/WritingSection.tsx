@@ -2,7 +2,7 @@ import { Writing } from '@/lib/types'
 
 export function WritingSection({ writing }: { writing: Writing[] }) {
   return (
-    <section id="writing" className="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-2">
+    <section id="writing" className="py-6 md:py-8 space-y-3 p-6 rounded-xl card">
       <p className="section-title" style={{ color: 'var(--muted)' }}>
         writing
       </p>

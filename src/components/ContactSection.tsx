@@ -2,7 +2,7 @@ import { Personal } from '@/lib/types'
 
 export function ContactSection({ personal }: { personal: Personal }) {
   return (
-    <section id="contact" className="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-8">
+    <section id="contact" className="py-6 md:py-8 space-y-3 p-6 rounded-xl card mb-4">
       <p className="section-title">contact</p>
       <p className="text-base max-w-prose" style={{ color: 'var(--text)' }}>
         say hi at{' '}

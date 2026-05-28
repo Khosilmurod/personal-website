@@ -2,7 +2,7 @@ import { Experience } from '@/lib/types'
 
 export function ExperienceSection({ experience }: { experience: Experience[] }) {
   return (
-    <section id="experience" className="py-6 md:py-8 space-y-6 p-6 rounded-xl card mb-2">
+    <section id="experience" className="py-6 md:py-8 space-y-6 p-6 rounded-xl card">
       <p className="section-title" style={{ color: 'var(--muted)' }}>
         experience
       </p>

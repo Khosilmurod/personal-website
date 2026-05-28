@@ -42,7 +42,7 @@ export function HeroSection({ personal }: { personal: Personal }) {
   const bioParagraphs = personal.bio.split('\n\n').map(highlightBio)
 
   return (
-    <section className="py-4 md:py-6 space-y-3 p-6 rounded-xl card mb-2">
+    <section className="py-4 md:py-6 space-y-3 p-6 rounded-xl card">
       <div className="flex items-start justify-between">
         <div className="flex-1 pr-6">
           <h1
