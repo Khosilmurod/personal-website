@@ -27,7 +27,7 @@ export function Header({ name }: { name: string }) {
       }}
     >
       <div
-        className="mx-auto w-full px-5 py-3 flex items-center"
+        className="mx-auto w-full pl-5 pr-12 py-3 flex items-center"
         style={{ maxWidth: 'var(--container)' }}
       >
         <Link href="/" className="flex items-center gap-2 hover:opacity-80" style={navStyle}>
@@ -53,10 +53,10 @@ export function Header({ name }: { name: string }) {
         >
           {open ? '✕' : '☰'}
         </button>
+      </div>
 
-        <span className="ml-4">
-          <ThemeToggle />
-        </span>
+      <div className="fixed top-0 right-0 z-40 flex items-center" style={{ top: 10, paddingRight: 20 }}>
+        <ThemeToggle />
       </div>
 
       {open && (
