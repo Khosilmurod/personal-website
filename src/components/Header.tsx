@@ -37,7 +37,7 @@ export function Header({ name }: { name: string }) {
 
         <div className="flex-1" />
 
-        <nav className="hidden sm:flex items-center gap-6 mr-6" style={navStyle}>
+        <nav className="hidden sm:flex items-center gap-6" style={navStyle}>
           {navLinks.map((item) => (
             <Link key={item} href={`/${item}`} className="hover:opacity-80" style={navStyle}>
               {item}
@@ -45,16 +45,18 @@ export function Header({ name }: { name: string }) {
           ))}
         </nav>
 
-        <ThemeToggle />
-
         <button
-          className="sm:hidden ml-4 hover:opacity-80 cursor-pointer"
+          className="sm:hidden hover:opacity-80 cursor-pointer"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
           style={{ ...navStyle, fontSize: 16, lineHeight: 1 }}
         >
           {open ? '✕' : '☰'}
         </button>
+
+        <span className="ml-4">
+          <ThemeToggle />
+        </span>
       </div>
 
       {open && (

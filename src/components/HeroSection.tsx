@@ -26,7 +26,6 @@ function highlightBio(bio: string) {
     'rural Uzbekistan',
     'climbing a tree to catch a phone signal',
     'building drones for farms',
-    'ambition is a moral obligation',
   ]
   let result = bio
   for (const term of terms) {

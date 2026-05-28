@@ -4,7 +4,7 @@ export const siteData: SiteData = {
   personal: {
     name: 'khosilmurod',
     title: 'software engineer',
-    bio: 'I am a Computer Science student at Yale.\n\nI grew up in rural Uzbekistan farming cattle and apple trees before becoming obsessed with technology and the future of the physical world.\n\nI got my first internet connection at 14 by climbing a tree to catch a phone signal.\n\nNow I am building drones for farms.\n\nI believe ambition is a moral obligation, civilization is still early, and the most important things in the world are still left to build.',
+    bio: 'I am a Computer Science student at Yale.\n\nI grew up in rural Uzbekistan farming cattle and apple trees before becoming obsessed with technology and the future of the physical world.\n\nI got my first internet connection at 14 by climbing a tree to catch a phone signal.\n\nNow I am building drones for farms.\n\nOutside of all that, I read a lot of philosophy.',
     email: 'm.abdukholikov@yale.edu',
     linkedin: 'https://linkedin.com/in/khosilmurod',
     github: 'https://github.com/khosilmurod',
