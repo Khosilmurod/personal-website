@@ -20,7 +20,7 @@ export function ThemeToggle() {
     <span
       onClick={toggle}
       className="cursor-pointer hover:opacity-80"
-      style={{ fontSize: 14, lineHeight: 1 }}
+      style={{ fontSize: 12, lineHeight: 1 }}
       aria-label="toggle theme"
     >
       {isDark ? '🌙' : '☀️'}
