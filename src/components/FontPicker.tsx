@@ -5,7 +5,8 @@ import Image from 'next/image'
 
 const backgrounds = [
   { name: 'alexander',    src: '/alexander.jpg' },
-  { name: 'athens school', src: '/athens_school.jpeg' },
+  { name: 'athens school', src: '/athens.jpeg' },
+  { name: 'mars',         src: '/mars.webp' },
   { name: 'none',         src: null },
 ]
 
