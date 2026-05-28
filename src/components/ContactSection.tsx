@@ -16,6 +16,8 @@ export function ContactSection({ personal }: { personal: Personal }) {
         or find me on{' '}
         <a
           href={personal.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
           className="underline hover:opacity-80"
           style={{ color: 'var(--text)' }}
         >
@@ -24,6 +26,8 @@ export function ContactSection({ personal }: { personal: Personal }) {
         and{' '}
         <a
           href={personal.github}
+          target="_blank"
+          rel="noopener noreferrer"
           className="underline hover:opacity-80"
           style={{ color: 'var(--text)' }}
         >

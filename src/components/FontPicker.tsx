@@ -22,6 +22,13 @@ export function FontPicker() {
     return () => window.removeEventListener('resize', check)
   }, [])
 
+  useEffect(() => {
+    const options = backgrounds.filter(b => b.src !== null)
+    const pick = options[Math.floor(Math.random() * options.length)]
+    setSelected(pick.src!)
+    document.documentElement.style.setProperty('--bg-image', `url('${pick.src}')`)
+  }, [])
+
   function pick(src: string | null) {
     setSelected(src ?? '')
     document.documentElement.style.setProperty(
@@ -44,6 +51,7 @@ export function FontPicker() {
             border: '1px solid var(--header-border)',
             borderRadius: 10,
             padding: isMobile ? '8px' : '10px',
+            paddingRight: isMobile ? 40 : 52,
             marginBottom: 8,
             boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
             display: 'flex',
