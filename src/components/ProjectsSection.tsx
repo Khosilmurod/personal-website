@@ -129,7 +129,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
 
               <div className="md:w-[32%]">
                 <p
-                  className="leading-snug text-neutral-400 dark:text-zinc-500 md:text-center"
+                  className="leading-snug text-neutral-400 dark:text-zinc-500"
                   style={{ fontFamily: "'EB Garamond', serif", fontSize: 13, fontWeight: 400 }}
                 >
                   {project.meta ?? ''}

@@ -14,7 +14,7 @@ export default function Home() {
       <FractalTreeWrapper />
       <main
         id="top"
-        className="mx-auto w-full px-5 pt-16 space-y-4"
+        className="mx-auto w-full px-5 pt-16 pb-16 space-y-4"
         style={{ maxWidth: 'var(--container)' }}
       >
         <HeroSection personal={personal} />
