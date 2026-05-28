@@ -7,6 +7,18 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'khosilmurod — engineer',
   description: 'cs @ yale. building drones for farms.',
+  openGraph: {
+    title: 'khosilmurod — engineer',
+    description: 'cs @ yale. building drones for farms.',
+    url: 'https://www.khosilmurod.com',
+    siteName: 'khosilmurod',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'khosilmurod — engineer',
+    description: 'cs @ yale. building drones for farms.',
+  },
   icons: {
     icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
