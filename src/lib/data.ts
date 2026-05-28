@@ -29,7 +29,7 @@ export const siteData: SiteData = {
       title: 'point-of-sale system',
       description: 'full-stack pos sold to a local jewelry chain at 15',
       subtitle: 'full-stack pos sold to a local jewelry chain at 15',
-      meta: 'spring boot, react · postgres, mongo',
+      meta: 'spring boot, react · postgres',
       links: { repo: 'https://github.com/Khosilmurod/pos-system', demo: '#', blog: '#' },
     },
   ],
