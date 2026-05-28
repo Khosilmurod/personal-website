@@ -8,5 +8,9 @@ const FractalTree = dynamic(
 )
 
 export function FractalTreeWrapper() {
-  return <FractalTree />
+  return (
+    <div className="hidden sm:block">
+      <FractalTree />
+    </div>
+  )
 }
