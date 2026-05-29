@@ -64,7 +64,7 @@ export function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
     <section
       className="rounded-3xl border border-neutral-200/70 dark:border-zinc-800 shadow-[0_18px_45px_rgba(15,23,42,0.06)]"
-      style={{ background: 'var(--card-bg)', transition: 'background-color 0.25s ease' }}
+      style={{ background: 'var(--card-bg)' }}
     >
       <div className="flex items-center justify-between border-b border-neutral-200/80 dark:border-zinc-700 px-4 py-2">
         <div className="flex items-center gap-1.5">
