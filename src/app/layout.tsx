@@ -5,10 +5,10 @@ import { FontPicker } from '@/components/FontPicker'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'khosilmurod — engineer',
+  title: 'khosilmurod',
   description: 'cs @ yale. building drones for farms.',
   openGraph: {
-    title: 'khosilmurod — engineer',
+    title: 'khosilmurod',
     description: 'cs @ yale. building drones for farms.',
     url: 'https://www.khosilmurod.com',
     siteName: 'khosilmurod',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'khosilmurod — engineer',
+    title: 'khosilmurod',
     description: 'cs @ yale. building drones for farms.',
   },
   icons: {
