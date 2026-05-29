@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.remove('dark')}}catch(e){}`,
+            __html: `try{if(window.innerWidth>=1024&&localStorage.getItem('theme')==='light'){document.documentElement.classList.remove('dark')}}catch(e){}`,
           }}
         />
       </head>

@@ -55,7 +55,7 @@ export function Header({ name }: { name: string }) {
         </button>
       </div>
 
-      <div className="fixed top-0 right-0 z-40 flex items-center" style={{ height: 44, paddingRight: 20 }}>
+      <div className="fixed top-0 right-0 z-40 hidden lg:flex items-center" style={{ height: 44, paddingRight: 20 }}>
         <ThemeToggle />
       </div>
 
