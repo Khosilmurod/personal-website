@@ -35,6 +35,7 @@ body {
   background: var(--bg);
   color: var(--text);
   position: relative;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body::before {
@@ -50,6 +51,7 @@ body::before {
   mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 75%);
   pointer-events: none;
   z-index: -1;
+  transition: opacity 0.2s ease;
 }
 
 .dark body::before {
@@ -86,6 +88,7 @@ span {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
+  transition: background-color 0.2s ease;
 }
 
 .highlight {
