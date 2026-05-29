@@ -27,7 +27,7 @@ export function Header({ name }: { name: string }) {
       }}
     >
       <div
-        className="mx-auto w-full pl-5 pr-12 py-3 flex items-center"
+        className="mx-auto w-full pl-5 pr-5 lg:pr-12 py-3 flex items-center"
         style={{ maxWidth: 'var(--container)' }}
       >
         <Link href="/" className="flex items-center gap-2 hover:opacity-80" style={navStyle}>
